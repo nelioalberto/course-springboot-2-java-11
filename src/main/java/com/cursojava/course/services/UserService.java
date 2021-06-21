@@ -13,14 +13,18 @@ import com.cursojava.course.repositories.UserRepository;
 public class UserService {
 	
 	@Autowired
-	private UserRepository Repository;
+	private UserRepository repository;
 	
 	public List<User> findAll() {
-		return Repository.findAll();
+		return repository.findAll();
 	}
 
 	public User findById (Long id) {
-		Optional<User> obj =  Repository.findById(id);
+		Optional<User> obj =  repository.findById(id);
 		return obj.get();
+	}
+	
+	public User insertUser (User obj) {
+		return repository.save(obj);	
 	}
 }
