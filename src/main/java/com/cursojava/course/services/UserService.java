@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.cursojava.course.entities.User;
 import com.cursojava.course.repositories.UserRepository;
+import com.cursojava.course.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -21,7 +22,7 @@ public class UserService {
 
 	public User findById (Long id) {
 		Optional<User> obj =  repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	public User insertUser (User obj) {
@@ -32,6 +33,7 @@ public class UserService {
 		repository.deleteById(id);
 	}
 
+	@SuppressWarnings("deprecation")
 	public User update(Long id, User obj) {
 		User entity = repository.getOne(id);
 		updateData (entity, obj);
