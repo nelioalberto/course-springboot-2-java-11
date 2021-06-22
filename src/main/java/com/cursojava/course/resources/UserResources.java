@@ -21,8 +21,8 @@ import com.cursojava.course.entities.User;
 import com.cursojava.course.services.UserService;
 
 @RestController
-//@RequestMapping(value = "/users")
-@RequestMapping(value = "/users", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/users")
+//@RequestMapping(value = "/users", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserResources {
 
 	@Autowired
